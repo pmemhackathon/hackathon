@@ -1,18 +1,19 @@
 #
-# Makefile for basic_mmap example
+# Makefile for numa example
 #
-PROGS = basic_mmap
+PROGS = numa
 CFLAGS = -g -Wall -Werror -std=gnu99
+LIBS = -lnuma
 
 all: $(PROGS)
 
-basic_mmap: basic_mmap.o
+numa: numa.o
 	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
 
 clean:
-	$(RM) *.o a.out core
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) $(PROGS) basic_mmap
+	$(RM) $(PROGS) numa
 
 .PHONY: all clean clobber
