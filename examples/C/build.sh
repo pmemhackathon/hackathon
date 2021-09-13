@@ -1,0 +1,17 @@
+rm -rf build
+
+MODULE_PATH="$PWD"
+
+CMAKE_PARAMS="-DCMAKE_MODULE_PATH='$MODULE_PATH'"
+CMAKE_PREFIX_PATH="$PREFIX/lib/cmake:$PREFIX/lib64/cmake:$PREFIX/lib:$PREFIX/lib64:$PREFIX:${CMAKE_PREFIX_PATH:-}"
+export CMAKE_PREFIX_PATH
+PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/lib64/pkgconfig:${PKG_CONFIG_PATH:-}"
+export PKG_CONFIG_PATH
+LD_LIBRARY_PATH="$PREFIX/lib:$PREFIX/lib64:${LD_LIBRARY_PATH:-}"
+export LD_LIBRARY_PATH
+
+mkdir build
+cd build
+
+CXX=clang++ CC=clang cmake $CMAKE_PARAMS ..
+make

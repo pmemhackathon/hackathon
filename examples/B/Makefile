@@ -1,23 +1,19 @@
 #
-# Makefile for simple pmemkv examples
+# Makefile for memkind example
 #
-OBJS = pmemkv.o kvinit.o
-CXXFLAGS = -std=c++17
-LIBS = -lpmemkv
+PROGS = memkind
+CFLAGS = -g -Wall -Werror -std=gnu99
+LIBS = -lnuma
 
-all: pmemkv
+all: $(PROGS)
 
-pmemkv: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBS)
-
-# for the Python script, the build step just checks for syntax errors
-kv: kv.py
-	python3 -m py_compile kv.py
+memkind: memkind.o
+	$(CC) -o $@ $(CFLAGS) $^ $(LIBS) -lmemkind
 
 clean:
-	$(RM) *.o core a.out
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) pmemkv
+	$(RM) $(PROGS) memkind
 
 .PHONY: all clean clobber
