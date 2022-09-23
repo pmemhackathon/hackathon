@@ -4,7 +4,7 @@ This example is intended for C++ programmers.
 
 This is example consists of these files:
 
-main.cpp   -- ecample creating a mult-tier cache using pmem
+main.cpp   -- example creating a mult-tier cache using pmem
 build.sh   -- rules for building this example
 run.sh     -- one way to run this example to illustrate what it does
 
