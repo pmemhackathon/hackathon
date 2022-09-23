@@ -2,7 +2,7 @@ Using pmem as a tier in cachelib
 
 This example is intended for C++ programmers.
 
-This is example consists of these files:
+This example consists of these files:
 
 main.cpp   -- example creating a mult-tier cache using pmem
 build.sh   -- rules for building this example
