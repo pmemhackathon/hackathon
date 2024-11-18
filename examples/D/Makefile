@@ -1,30 +1,19 @@
 #
-# Makefile for word frequency count examples
+# Makefile for memspace_numa example
 #
-PROGS = freq freq_mt freq_pmem freq_pmem_print
+PROGS = memspace_numa
 CFLAGS = -g -Wall -Werror -std=gnu99
+LIBS = -lumf -lnuma -ltbbmalloc
 
 all: $(PROGS)
 
-freq_mt: LIBS = -pthread
-freq_pmem freq_pmem_print freq_pmem_cpp: LIBS = -lpmem -lpmemobj -pthread
-
-freq: freq.o
-	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
-
-freq_mt: freq_mt.o
-	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
-
-freq_pmem: freq_pmem.o
-	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
-
-freq_pmem_print: freq_pmem_print.o
+memspace_numa: memspace_numa.o
 	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
 
 clean:
-	$(RM) *.o a.out core
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) $(PROGS)
+	$(RM) $(PROGS) memspace_numa
 
 .PHONY: all clean clobber

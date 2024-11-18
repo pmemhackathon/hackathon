@@ -1,18 +1,19 @@
 #
-# Makefile for C++ queue example
+# Makefile for memspace_hmat example
 #
-OBJS = queue.o
-LIBS = -lpmemobj -lpmem
+PROGS = memspace_hmat
+CFLAGS = -g -Wall -Werror -std=gnu99
+LIBS = -lumf -lnuma -ltbbmalloc
 
-all: queue
+all: $(PROGS)
 
-queue: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBS)
+memspace_hmat: memspace_hmat.o
+	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
 
 clean:
-	$(RM) *.o core a.out
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) queue
+	$(RM) $(PROGS) memspace_hmat
 
 .PHONY: all clean clobber

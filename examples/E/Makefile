@@ -1,24 +1,19 @@
 #
-# Makefile for word frequency count example in C++
+# Makefile for custom_file_provider example
 #
-PROGS = freq_pmem_print freq_pmem_cpp
+PROGS = custom_file_provider
 CFLAGS = -g -Wall -Werror -std=gnu99
-CXXFLAGS = -g -Wall -Werror -std=gnu++11
+LIBS = -lumf -lnuma -ltbbmalloc
 
 all: $(PROGS)
 
-freq_pmem_print freq_pmem_cpp: LIBS = -lpmem -lpmemobj -pthread
-
-freq_pmem_print: freq_pmem_print.o
+custom_file_provider: custom_file_provider.o
 	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
 
-freq_pmem_cpp: freq_pmem_cpp.o
-	$(CXX) -o $@ $(CFLAGS) $^ $(LIBS)
-
 clean:
-	$(RM) *.o a.out core
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) $(PROGS)
+	$(RM) $(PROGS) custom_file_provider
 
 .PHONY: all clean clobber

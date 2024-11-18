@@ -1,23 +1,19 @@
 #
-# Makefile for simple pmemkv examples
+# Makefile for basic example
 #
-OBJS = pmemkv.o kvinit.o
-CXXFLAGS = -std=c++17
-LIBS = -lpmemkv
+PROGS = basic
+CFLAGS = -g -Wall -Werror -std=gnu99
+LIBS = -lumf -ltbbmalloc
 
-all: pmemkv
+all: $(PROGS)
 
-pmemkv: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBS)
-
-# for the Python script, the build step just checks for syntax errors
-kv: kv.py
-	python3 -m py_compile kv.py
+basic: basic.o
+	$(CC) -o $@ $(CFLAGS) $^ $(LIBS)
 
 clean:
-	$(RM) *.o core a.out
+	$(RM) *.o a.out
 
 clobber: clean
-	$(RM) pmemkv
+	$(RM) $(PROGS) basic 
 
 .PHONY: all clean clobber
