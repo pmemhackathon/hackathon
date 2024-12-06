@@ -255,7 +255,7 @@ static umf_memory_provider_ops_t file_ops = {
     .get_last_native_error = file_get_last_native_error,
     .get_recommended_page_size = file_get_recommended_page_size,
     .get_min_page_size = file_get_min_page_size,
-    .ext.free = file_free,
+    .free = file_free,
 };
 
 // Main function

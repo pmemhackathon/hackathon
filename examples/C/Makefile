@@ -3,7 +3,7 @@
 #
 PROGS = memspace_hmat
 CFLAGS = -g -Wall -Werror -std=gnu99
-LIBS = -lumf -lnuma -ltbbmalloc
+LIBS = -lumf -lnuma
 
 all: $(PROGS)
 

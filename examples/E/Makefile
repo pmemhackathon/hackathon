@@ -3,7 +3,7 @@
 #
 PROGS = custom_file_provider
 CFLAGS = -g -Wall -Werror -std=gnu99
-LIBS = -lumf -lnuma -ltbbmalloc
+LIBS = -lumf -lnuma
 
 all: $(PROGS)
 

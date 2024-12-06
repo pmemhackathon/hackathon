@@ -3,7 +3,7 @@
 #
 PROGS = basic
 CFLAGS = -g -Wall -Werror -std=gnu99
-LIBS = -lumf -ltbbmalloc
+LIBS = -lumf
 
 all: $(PROGS)
 
